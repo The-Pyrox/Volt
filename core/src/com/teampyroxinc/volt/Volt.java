@@ -7,6 +7,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.teampyroxinc.volt.states.GameStateManager;
+import com.teampyroxinc.volt.states.MenuState;
 
 public class Volt extends Game {
 	public static final int WIDTH = 480;
