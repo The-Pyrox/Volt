@@ -1,10 +1,8 @@
 package com.teampyroxinc.volt.states;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -12,8 +10,8 @@ import com.teampyroxinc.volt.Volt;
 import com.teampyroxinc.volt.sprites.Ball;
 import com.teampyroxinc.volt.sprites.Tube;
 
-public class PlayState extends State {
-    private static final int TUBE_SPACING = 200;
+
+public class HardState extends State{    private static final int TUBE_SPACING = 200;
     private static final int GROUND_Y_OFFSET = -70;
     private static final int TUBE_COUNT = 2;
     private Array<Tube> tubes;
@@ -34,7 +32,7 @@ public class PlayState extends State {
 
 
 
-    public PlayState(final GameStateManager gsm) {
+    public HardState(final GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
 
@@ -76,10 +74,10 @@ public class PlayState extends State {
                 tube.reposition(tube.getPosBotTube().x + 150);
                 tube.reposition(tube.getPosHosTube().x + 300);
                 points = points + 3;
-                }
-                if (tube.collides(ball.getBounds())) {
-                    gameover = true;
-                }
+            }
+            if (tube.collides(ball.getBounds())) {
+                gameover = true;
+            }
 
 
         }
@@ -98,10 +96,10 @@ public class PlayState extends State {
         sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
         for (Tube tube : tubes) {
-                sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
-                sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
-                sb.draw(tube.getHosTube(), tube.getPosHosTube().x, tube.getPosHosTube().y);
-            }
+            sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
+            sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
+            sb.draw(tube.getHosTube(), tube.getPosHosTube().x, tube.getPosHosTube().y);
+        }
 
 
         font.draw(sb,Long.toString(getPoints()),cam.position.x ,cam.position.y * 2 );
@@ -136,3 +134,5 @@ public class PlayState extends State {
 
 
 }
+
+

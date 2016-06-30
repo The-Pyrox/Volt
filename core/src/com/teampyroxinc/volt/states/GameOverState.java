@@ -14,7 +14,7 @@ public class GameOverState extends State {
     private float title_width,width;
     private SpriteBatch sb;
     private String title,tag;
-    public PlayState ps;
+    public EasyState ps;
     private int score;
 
     public GameOverState(GameStateManager gsm) {
@@ -22,7 +22,7 @@ public class GameOverState extends State {
         super(gsm);
         background = new Texture("background.png");
         sb = new SpriteBatch();
-        ps = new PlayState(gsm);
+        ps = new EasyState(gsm);
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"), Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title.getData().setScale(2f);

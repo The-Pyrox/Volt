@@ -1,16 +1,13 @@
 package com.teampyroxinc.volt;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.teampyroxinc.volt.states.CreditState;
 import com.teampyroxinc.volt.states.GameStateManager;
 import com.teampyroxinc.volt.states.MenuState;
-import com.teampyroxinc.volt.states.PlayState;
 
 public class Volt extends Game {
 	public static final int WIDTH = 480;

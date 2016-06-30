@@ -2,9 +2,7 @@ package com.teampyroxinc.volt.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -66,7 +64,7 @@ public class LevelState extends State {
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 
-                gsm.set(new MenuState(gsm));
+                gsm.set(new EasyState(gsm));
                 return true;
             }
         });
@@ -79,7 +77,7 @@ public class LevelState extends State {
         button_medium.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 
-                gsm.set(new MenuState(gsm));
+                gsm.set(new MediumState(gsm));
                 return true;
             }
         });
@@ -92,7 +90,7 @@ public class LevelState extends State {
         button_hard.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 
-                gsm.set(new MenuState(gsm));
+                gsm.set(new HardState(gsm));
                 return true;
             }
         });

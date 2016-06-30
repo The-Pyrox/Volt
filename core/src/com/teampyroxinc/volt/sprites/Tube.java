@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.teampyroxinc.volt.states.GameStateManager;
-import com.teampyroxinc.volt.states.PlayState;
 
 import java.util.Random;
 
