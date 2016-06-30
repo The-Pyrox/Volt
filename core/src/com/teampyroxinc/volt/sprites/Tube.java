@@ -18,7 +18,7 @@ public class Tube {
     private Vector2 posTopTube,posBotTube,posHosTube;
     private Rectangle boundsTop,boundsBot,boundsHos;
     private Random rand;
-    public PlayState ps;
+
     public GameStateManager gsm;
 
 
@@ -27,7 +27,7 @@ public class Tube {
         bottomTube = new Texture("vertical2.png");
         hosTube = new Texture("horizontal.png");
         rand = new Random();
-        ps = new PlayState(gsm);
+
 
         posTopTube = new Vector2(x + 100, rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
         posBotTube = new Vector2(x + 300 , rand.nextInt(MAX));
