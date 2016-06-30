@@ -12,7 +12,11 @@ public class GameOverState extends State {
     private BitmapFont font,font_title;
     private SpriteBatch sb;
     private GlyphLayout glytitle,glytag;
-    float wtitle,wtag;
+    private float wtitle,wtag;
+    public int FINAL_SCORE ;
+
+
+
 
     public GameOverState(GameStateManager gsm) {
         super(gsm);
@@ -21,6 +25,8 @@ public class GameOverState extends State {
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title.getData().setScale(2f);
+
+
 
         glytitle = new GlyphLayout();
         glytag = new GlyphLayout();
@@ -46,6 +52,7 @@ public class GameOverState extends State {
     public void update(float dt) {
         handleInput();
 
+
     }
 
     @Override
@@ -56,6 +63,7 @@ public class GameOverState extends State {
         sb.begin();
         font_title.draw(sb,"GAME OVER",cam.position.x - wtitle / 2,(cam.position.y * 3)/ 2 );
         font.draw(sb,"Your Score Is",cam.position.x - wtag / 2,cam.position.y );
+        font.draw(sb,Integer.toString(getFINAL_SCORE()),cam.position.x,cam.position.y /2);
         sb.end();
 
     }
@@ -65,5 +73,14 @@ public class GameOverState extends State {
         sb.dispose();
 
 
+    }
+
+
+    public Integer getFINAL_SCORE() {
+        return FINAL_SCORE;
+    }
+
+    public void setFINAL_SCORE(Integer FINAL_SCORE) {
+        this.FINAL_SCORE = FINAL_SCORE;
     }
 }

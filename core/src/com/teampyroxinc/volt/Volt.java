@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.teampyroxinc.volt.states.EasyState;
 import com.teampyroxinc.volt.states.GameOverState;
 import com.teampyroxinc.volt.states.GameStateManager;
 import com.teampyroxinc.volt.states.MenuState;
@@ -31,7 +32,7 @@ public class Volt extends Game {
 		music.setVolume(0.5f);
 		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-		gsm.push(new GameOverState(gsm));
+		gsm.push(new EasyState(gsm));
 	}
 
 	@Override
