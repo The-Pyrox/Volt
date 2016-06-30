@@ -2,14 +2,11 @@ package com.teampyroxinc.volt.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 
-import java.awt.Rectangle;
 
-/**
- * Created by pooja on 6/30/2016.
- */
 public class Ball {
     private static final int GRAVITY = -15;
     private Rectangle bounds;
