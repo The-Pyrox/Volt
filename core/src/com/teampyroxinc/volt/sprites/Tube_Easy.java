@@ -12,7 +12,7 @@ public class Tube_Easy {
     private static final int FLUCTUATION = 100;
     private static final int MAX = 300;
     private static final int ALL = 300;
-    private static final int LOWEST_OPENING = 130;
+    private static final int LOWEST_OPENING = 120;
     private Texture topTube, bottomTube,hosTube;
     private Vector2 posTopTube,posBotTube,posHosTube;
     private Rectangle boundsTop,boundsBot,boundsHos;
@@ -29,9 +29,9 @@ public class Tube_Easy {
 
 
         posTopTube = new Vector2(x + 100, rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
-        posBotTube = new Vector2(x + 300 , rand.nextInt(MAX));
-        posHosTube = new Vector2(x + 500, rand.nextInt(ALL));
 
+        posHosTube = new Vector2(x + 300, rand.nextInt(ALL));
+        posBotTube = new Vector2(x + 500 + 320 , rand.nextInt(MAX));
 
 
 
@@ -61,8 +61,8 @@ public class Tube_Easy {
     public void reposition(float x){
 
         posTopTube.set(x , rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
-        posBotTube.set(x + 200 ,rand.nextInt(MAX));
-        posHosTube.set(x + 400,rand.nextInt(ALL));
+        posHosTube.set(x + 200,rand.nextInt(ALL));
+        posBotTube.set(x + 400  ,rand.nextInt(MAX));
 
 
 

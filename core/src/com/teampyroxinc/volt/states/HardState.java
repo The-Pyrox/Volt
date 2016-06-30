@@ -77,8 +77,9 @@ public class HardState extends State{    private static final int TUBE_SPACING =
 
             if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosHosTube().x + tubeEasy.getHosTube().getWidth()) {
                 tubeEasy.reposition(tubeEasy.getPosTopTube().x);
-                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 100);
-                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
+
+                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 80);
+                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 120 + 320);
                 points = points + 3;
             }
             if (tubeEasy.collides(ball.getBounds())) {
