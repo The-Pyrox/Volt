@@ -1,50 +1,45 @@
 package com.teampyroxinc.volt.states;
 
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.teampyroxinc.volt.Volt;
 
 public class GameOverState extends State {
-
-    private Texture background;
-    private BitmapFont font_title,font;
-    private GlyphLayout glyph,glyph_title;
-    private float title_width,width;
+    private BitmapFont font,font_title;
     private SpriteBatch sb;
-    private String title,tag;
-    public EasyState ps;
-    private int score;
+    private GlyphLayout glytitle,glytag;
+    float wtitle,wtag;
 
     public GameOverState(GameStateManager gsm) {
-
         super(gsm);
-        background = new Texture("background.png");
+        cam.setToOrtho(false, Volt.WIDTH / 2, Volt.HEIGHT / 2);
         sb = new SpriteBatch();
-        ps = new EasyState(gsm);
-        font = new BitmapFont(Gdx.files.internal("myfont.fnt"), Gdx.files.internal("myfont.png"),false);
+        font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title.getData().setScale(2f);
-        title = new String("GAME OVER");
-        tag = new String("Your Score Is");
-        glyph = new GlyphLayout();
-        glyph_title = new GlyphLayout();
-        glyph_title.setText(font_title,title);
-        glyph.setText(font,tag);
-        title_width = glyph_title.width;
-        width = glyph.width;
 
+        glytitle = new GlyphLayout();
+        glytag = new GlyphLayout();
+        glytitle.setText(font_title,"GAME OVER");
+        glytag.setText(font,"Your Score Is");
 
+        wtitle = glytitle.width;
+        wtag = glytag.width;
 
 
     }
 
     @Override
     public void handleInput() {
-        if (Gdx.input.justTouched()){
+        if (Gdx.input.justTouched()) {
             gsm.set(new MenuState(gsm));
+
         }
+
     }
 
     @Override
@@ -55,28 +50,20 @@ public class GameOverState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(background,0,0);
-        font_title.draw(sb,title,cam.position.x - title_width / 2,cam.position.y * 3);
-        font.draw(sb,tag,cam.position.x - width / 2,cam.position.y);
-        font.draw(sb,Integer.toString(getScore()),cam.position.x,(cam.position.y * 3) / 4 );
+        font_title.draw(sb,"GAME OVER",cam.position.x - wtitle / 2,(cam.position.y * 3)/ 2 );
+        font.draw(sb,"Your Score Is",cam.position.x - wtag / 2,cam.position.y );
         sb.end();
+
     }
 
     @Override
     public void dispose() {
         sb.dispose();
-        background.dispose();
-        ps.dispose();
-        font.dispose();
-        font_title.dispose();
-    }
 
-    public int getScore() {
-        return score;
-    }
 
-    public void setScore(int score) {
-        this.score = score;
     }
 }

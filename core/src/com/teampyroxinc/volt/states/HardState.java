@@ -21,16 +21,8 @@ public class HardState extends State{    private static final int TUBE_SPACING =
     private Texture ground;
     private Vector2 groundPos1,groundPos2;
     private BitmapFont font;
-
     private int points;
-
-
     public boolean gameover;
-
-
-
-
-
 
     public HardState(final GameStateManager gsm) {
         super(gsm);
