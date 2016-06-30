@@ -109,11 +109,6 @@ public class MenuState extends State{
             }
         });
 
-
-
-
-
-
     }
     @Override
     public void handleInput() {
@@ -134,12 +129,11 @@ public class MenuState extends State{
     @Override
     public void dispose() {
         stage.dispose();
-
-
-
-
-
-
+        sb.dispose();
+        font_bolt.dispose();
+        font.dispose();
+        buttonSkin.dispose();
+        buttonsAtlas.dispose();
     }
 
 
