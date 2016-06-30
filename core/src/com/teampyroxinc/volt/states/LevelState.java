@@ -2,6 +2,7 @@ package com.teampyroxinc.volt.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,6 +24,7 @@ public class LevelState extends State {
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
     private TextButton button_easy,button_medium,button_hard,button_level;
+    private PlayState ps;
     public LevelState(final GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Volt.WIDTH / 2, Volt.HEIGHT / 2);
@@ -30,6 +32,7 @@ public class LevelState extends State {
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font.getData().setScale(5f);
         font_title.getData().setScale(12f);
+        ps = new PlayState(gsm);
 
         level = new String("LEVEL");
 
@@ -62,6 +65,7 @@ public class LevelState extends State {
         stage.addActor(button_easy);
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                ps.setFINAL_LEVEL(1);
                 gsm.set(new LevelState(gsm));
                 return true;
             }
@@ -74,6 +78,7 @@ public class LevelState extends State {
         stage.addActor(button_medium);
         button_medium.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                ps.setFINAL_LEVEL(2);
                 gsm.set(new LevelState(gsm));
                 return true;
             }
@@ -86,6 +91,7 @@ public class LevelState extends State {
         stage.addActor(button_hard);
         button_hard.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                ps.setFINAL_LEVEL(3);
                 gsm.set(new LevelState(gsm));
                 return true;
             }
@@ -121,6 +127,7 @@ public class LevelState extends State {
     public void dispose() {
         stage.dispose();
         font_title.dispose();
+        ps.dispose();
         font.dispose();
         buttonsAtlas.dispose();
         buttonSkin.dispose();

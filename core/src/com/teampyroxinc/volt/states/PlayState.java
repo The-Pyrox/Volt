@@ -1,6 +1,16 @@
 package com.teampyroxinc.volt.states;
 
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
+import com.teampyroxinc.volt.Volt;
+import com.teampyroxinc.volt.sprites.Ball;
+import com.teampyroxinc.volt.sprites.Tube;
 
 public class PlayState extends State {
     private static final int TUBE_SPACING = 200;
@@ -18,9 +28,10 @@ public class PlayState extends State {
     private String score,gtag;
     private GlyphLayout glyph_gameover,glyph_score;
     public boolean gameover;
+    private GameOverState gs;
 
     private int FINAL_LEVEL;
-    private GameOverState gs;
+
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -40,7 +51,7 @@ public class PlayState extends State {
 
         groundPos1 = new Vector2(cam.position.x - cam.viewportWidth / 2,GROUND_Y_OFFSET);
         groundPos2 = new Vector2(cam.position.x - cam.viewportWidth / 2 + ground.getWidth(),GROUND_Y_OFFSET);
-        cam.setToOrtho(false, bolt.WIDTH /2,bolt.HEIGHT /2);
+        cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
         gameover = new Boolean(false);
         for (int i = 1;i < TUBE_COUNT; i++ ){
             tubes.add(new Tube(i * (TUBE_SPACING)));
