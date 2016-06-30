@@ -120,6 +120,10 @@ public class LevelState extends State {
     @Override
     public void dispose() {
         stage.dispose();
+        font_title.dispose();
+        font.dispose();
+        buttonsAtlas.dispose();
+        buttonSkin.dispose();
 
     }
 }
