@@ -3,7 +3,6 @@ package com.teampyroxinc.volt.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,13 +10,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teampyroxinc.volt.Volt;
 import com.teampyroxinc.volt.sprites.Ball;
-import com.teampyroxinc.volt.sprites.Tube;
+import com.teampyroxinc.volt.sprites.Tube_Easy;
 
 public class EasyState extends State {
     private static final int TUBE_SPACING = 200;
     private static final int GROUND_Y_OFFSET = -70;
     private static final int TUBE_COUNT = 2;
-    private Array<Tube> tubes;
+    private Array<Tube_Easy> tubes;
     private Ball ball;
     private SpriteBatch sb;
     private Texture background;
@@ -47,7 +46,7 @@ public class EasyState extends State {
         ball = new Ball(50,120);
         sb = new SpriteBatch();
         ground = new Texture("ground.png");
-        tubes = new Array<Tube>();
+        tubes = new Array<Tube_Easy>();
         points = new Integer(0);
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
 
@@ -69,7 +68,7 @@ public class EasyState extends State {
         gameover = new Boolean(false);
 
         for (int i = 1;i < TUBE_COUNT; i++ ){
-            tubes.add(new Tube(i * (TUBE_SPACING)));
+            tubes.add(new Tube_Easy(i * (TUBE_SPACING)));
         }
 
     }
@@ -86,16 +85,16 @@ public class EasyState extends State {
         updateGround();
         cam.position.x = ball.getPosition().x + 80;
 
-        for (Tube tube : tubes) {
+        for (Tube_Easy tubeEasy : tubes) {
 
-            if (cam.position.x - cam.viewportWidth / 2 > tube.getPosHosTube().x + tube.getHosTube().getWidth()) {
-                tube.reposition(tube.getPosTopTube().x);
-                tube.reposition(tube.getPosBotTube().x + 150);
-                tube.reposition(tube.getPosHosTube().x + 300);
+            if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosHosTube().x + tubeEasy.getHosTube().getWidth()) {
+                tubeEasy.reposition(tubeEasy.getPosTopTube().x);
+                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 150);
+                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 300);
                 points = points + 3;
 
                 }
-                if (tube.collides(ball.getBounds())) {
+                if (tubeEasy.collides(ball.getBounds())) {
                     gameover = true;
                 }
 
@@ -116,10 +115,10 @@ public class EasyState extends State {
         sb.begin();
         sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
-        for (Tube tube : tubes) {
-                sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
-                sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
-                sb.draw(tube.getHosTube(), tube.getPosHosTube().x, tube.getPosHosTube().y);
+        for (Tube_Easy tubeEasy : tubes) {
+                sb.draw(tubeEasy.getTopTube(), tubeEasy.getPosTopTube().x, tubeEasy.getPosTopTube().y);
+                sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
+                sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
             }
 
 

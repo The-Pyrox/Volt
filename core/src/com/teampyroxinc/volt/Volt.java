@@ -32,7 +32,7 @@ public class Volt extends Game {
 		music.setVolume(0.5f);
 		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-		gsm.push(new EasyState(gsm));
+		gsm.push(new MenuState(gsm));
 	}
 
 	@Override

@@ -9,13 +9,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.teampyroxinc.volt.Volt;
 import com.teampyroxinc.volt.sprites.Ball;
-import com.teampyroxinc.volt.sprites.Tube;
+import com.teampyroxinc.volt.sprites.Tube_Hard;
 
 
 public class HardState extends State{    private static final int TUBE_SPACING = 200;
     private static final int GROUND_Y_OFFSET = -70;
     private static final int TUBE_COUNT = 2;
-    private Array<Tube> tubes;
+    private Array<Tube_Hard> tubes;
     private Ball ball;
     private SpriteBatch sb;
     private Texture background;
@@ -37,7 +37,7 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         sb = new SpriteBatch();
         ground = new Texture("ground.png");
 
-        tubes = new Array<Tube>();
+        tubes = new Array<Tube_Hard>();
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_gameover = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_gameover.getData().setScale(2f,2f);
@@ -56,7 +56,7 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         gameover = new Boolean(false);
 
         for (int i = 1;i < TUBE_COUNT; i++ ){
-            tubes.add(new Tube(i * (TUBE_SPACING)));
+            tubes.add(new Tube_Hard(i * (TUBE_SPACING)));
         }
 
     }
@@ -73,15 +73,15 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         updateGround();
         cam.position.x = ball.getPosition().x + 80;
 
-        for (Tube tube : tubes) {
+        for (Tube_Hard tubeEasy : tubes) {
 
-            if (cam.position.x - cam.viewportWidth / 2 > tube.getPosHosTube().x + tube.getHosTube().getWidth()) {
-                tube.reposition(tube.getPosTopTube().x);
-                tube.reposition(tube.getPosBotTube().x + 100);
-                tube.reposition(tube.getPosHosTube().x + 200);
+            if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosHosTube().x + tubeEasy.getHosTube().getWidth()) {
+                tubeEasy.reposition(tubeEasy.getPosTopTube().x);
+                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 100);
+                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
                 points = points + 3;
             }
-            if (tube.collides(ball.getBounds())) {
+            if (tubeEasy.collides(ball.getBounds())) {
                 gameover = true;
             }
 
@@ -102,10 +102,10 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         sb.begin();
         sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
-        for (Tube tube : tubes) {
-            sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
-            sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
-            sb.draw(tube.getHosTube(), tube.getPosHosTube().x, tube.getPosHosTube().y);
+        for (Tube_Hard tubeEasy : tubes) {
+            sb.draw(tubeEasy.getTopTube(), tubeEasy.getPosTopTube().x, tubeEasy.getPosTopTube().y);
+            sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
+            sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
         }
 
 
@@ -138,9 +138,6 @@ public class HardState extends State{    private static final int TUBE_SPACING =
     @Override
     public void dispose() {
         sb.dispose();
-
-
-
     }
     public int getPoints() {
         return points;
