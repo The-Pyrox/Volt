@@ -28,7 +28,7 @@ public class CreditState extends State {
         str2 = new String("Version 1.0");
         str3 = new String("Developer Details:");
         str4 = new String("POOJAN RATHOD");
-        str5 = new String("18,#ANDROID");
+        str5 = new String("18,INDIAN");
 
         glyph_title = new GlyphLayout();
         glystr1 = new GlyphLayout();
