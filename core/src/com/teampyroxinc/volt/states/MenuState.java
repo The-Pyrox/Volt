@@ -26,7 +26,7 @@ public class MenuState extends State{
     private Stage stage;
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
-    private TextButton button_play,button_high,button_exit,button_credits;
+    private TextButton button_play,button_high,button_exit,button_credits,button_tag;
 
     public MenuState(final GameStateManager gsm) {
         super(gsm);
@@ -35,8 +35,9 @@ public class MenuState extends State{
         font_bolt = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false );
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"), false);
         font.getData().setScale(5f);
+        font_bolt.getData().setScale(12f);
 
-        font_bolt.getData().setScale(3f,3f);
+
         glyphtitle = new GlyphLayout();
         title = new String("VOLT");
         glyphtitle.setText(font_bolt,title);
@@ -46,16 +47,34 @@ public class MenuState extends State{
         buttonSkin.addRegions(buttonsAtlas);
         stage = new Stage();
 
+
         Gdx.input.setInputProcessor(stage);
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.up = buttonSkin.getDrawable("buttons");
         style.down = buttonSkin.getDrawable("buttons");
         style.font = font;
 
+        TextButton.TextButtonStyle style_title = new TextButton.TextButtonStyle();
+        style_title.up = buttonSkin.getDrawable("buttons");
+        style_title.down = buttonSkin.getDrawable("buttons");
+        style_title.font = font_bolt;
+
+        button_high = new TextButton(title, style_title);
+        button_high.setWidth(300);
+        button_high.setHeight(100);
+        button_high.setPosition(cam.position.x * 3,cam.position.y * 7);
+        stage.addActor(button_high);
+
+        button_tag = new TextButton("TEAM PYROX INC.", style);
+        button_tag.setWidth(300);
+        button_tag.setHeight(100);
+        button_tag.setPosition(cam.position.x * 3,(cam.position.y * 1) / 2 );
+        stage.addActor(button_tag);
+
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
         button_play.setHeight(100);
-        button_play.setPosition(cam.position.x * 3,cam.position.y * 5);
+        button_play.setPosition(cam.position.x * 3,cam.position.y * 4);
         stage.addActor(button_play);
         button_play.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -67,7 +86,7 @@ public class MenuState extends State{
         button_credits = new TextButton("CREDITS", style);
         button_credits.setWidth(300);
         button_credits.setHeight(100);
-        button_credits.setPosition(cam.position.x * 3,cam.position.y * 4);
+        button_credits.setPosition(cam.position.x * 3,cam.position.y * 3);
         stage.addActor(button_credits);
         button_credits.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -81,7 +100,7 @@ public class MenuState extends State{
         button_exit = new TextButton("EXIT", style);
         button_exit.setWidth(300);
         button_exit.setHeight(100);
-        button_exit.setPosition(cam.position.x * 3,cam.position.y * 3);
+        button_exit.setPosition(cam.position.x * 3,cam.position.y * 2);
         stage.addActor(button_exit);
         button_exit.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -109,8 +128,6 @@ public class MenuState extends State{
         sb.setProjectionMatrix(cam.combined);
         stage.act();
         sb.begin();
-        font_bolt.draw(sb,title, cam.position.x - title_width / 2, (cam.position.y  * 7) / 4);
-
         stage.draw();
         sb.end();
     }
