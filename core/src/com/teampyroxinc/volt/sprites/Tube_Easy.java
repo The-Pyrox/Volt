@@ -62,7 +62,7 @@ public class Tube_Easy {
 
         posTopTube.set(x , rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
         posHosTube.set(x + 200,rand.nextInt(ALL));
-        posBotTube.set(x + 400  ,rand.nextInt(MAX));
+        posBotTube.set(x + 400 +320 ,rand.nextInt(MAX));
 
 
 

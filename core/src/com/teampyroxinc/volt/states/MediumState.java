@@ -85,7 +85,7 @@ public class MediumState extends State{
 
             for (Tube_Medium tubeEasy : tubes) {
 
-                if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosHosTube().x + tubeEasy.getHosTube().getWidth()) {
+                if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
                     tubeEasy.reposition(tubeEasy.getPosTopTube().x);
 
                     tubeEasy.reposition(tubeEasy.getPosHosTube().x + 100);

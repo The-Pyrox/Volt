@@ -61,9 +61,8 @@ public class Tube_Hard {
     public void reposition(float x){
 
         posTopTube.set(x , rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
-
         posHosTube.set(x + 100,rand.nextInt(ALL));
-        posBotTube.set(x + 200 ,rand.nextInt(MAX));
+        posBotTube.set(x + 200 + 320 ,rand.nextInt(MAX));
 
 
 
