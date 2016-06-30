@@ -23,7 +23,7 @@ public class PlayState extends State {
     private Texture ground;
     private Vector2 groundPos1,groundPos2;
     private BitmapFont font;
-    private Tube tube;
+
     private int points;
 
 
@@ -34,30 +34,26 @@ public class PlayState extends State {
 
 
 
-    public PlayState(GameStateManager gsm) {
+    public PlayState(final GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
-        ball = new Ball(50,120);
+
         background = new Texture("background.png");
-        sb = new SpriteBatch();
+        ball = new Ball(50,120);
+        /*sb = new SpriteBatch();
         ground = new Texture("ground.png");
-        setFINAL_LEVEL(1);
-        tubes = new Array<Tube>();
+
+        tubes = new Array<Tube>();*/
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
 
-
-
-
-
-
-        groundPos1 = new Vector2(cam.position.x - cam.viewportWidth / 2,GROUND_Y_OFFSET);
+        /*groundPos1 = new Vector2(cam.position.x - cam.viewportWidth / 2,GROUND_Y_OFFSET);
         groundPos2 = new Vector2(cam.position.x - cam.viewportWidth / 2 + ground.getWidth(),GROUND_Y_OFFSET);
 
         gameover = new Boolean(false);
         for (int i = 1;i < TUBE_COUNT; i++ ){
             tubes.add(new Tube(i * (TUBE_SPACING)));
-        }
-        Gdx.graphics.requestRendering();
+        }*/
+
     }
     @Override
     public void handleInput() {
@@ -69,10 +65,10 @@ public class PlayState extends State {
     public void update(float dt) {
         handleInput();
         ball.update(dt);
-        updateGround();
+
         cam.position.x = ball.getPosition().x + 80;
 
-        for (Tube tube : tubes) {
+        /*for (Tube tube : tubes) {
 
             if (cam.position.x - cam.viewportWidth / 2 > tube.getPosHosTube().x + tube.getHosTube().getWidth()) {
                 tube.reposition(tube.getPosTopTube().x);
@@ -90,7 +86,7 @@ public class PlayState extends State {
         if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             gameover = true;
 
-        }
+        }*/
 
         cam.update();
     }
@@ -101,7 +97,7 @@ public class PlayState extends State {
         sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
 
-        for (Tube tube : tubes) {
+       /* for (Tube tube : tubes) {
                 sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
                 sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
                 sb.draw(tube.getHosTube(), tube.getPosHosTube().x, tube.getPosHosTube().y);
@@ -114,20 +110,21 @@ public class PlayState extends State {
         if (gameover){
             newgame();
         }
-
+        */
         sb.end();
     }
-    public void updateGround(){
+    /*public void updateGround(){
         if(cam.position.x - (cam.viewportWidth / 2) > groundPos1.x + ground.getWidth())
             groundPos1.add(ground.getWidth() * 2, 0);
         if(cam.position.x - (cam.viewportWidth / 2) > groundPos2.x + ground.getWidth())
             groundPos2.add(ground.getWidth() * 2, 0);
-    }
+    }*/
     public  void newgame(){
         gsm.set(new MenuState(gsm));
     }
     @Override
     public void dispose() {
+        sb.dispose();
 
 
 
@@ -136,11 +133,5 @@ public class PlayState extends State {
         return points;
     }
 
-    public Integer getFINAL_LEVEL() {
-        return FINAL_LEVEL;
-    }
 
-    public void setFINAL_LEVEL(Integer FINAL_LEVEL) {
-        this.FINAL_LEVEL = FINAL_LEVEL;
-    }
 }
