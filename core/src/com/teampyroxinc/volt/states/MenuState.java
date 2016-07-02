@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.teampyroxinc.volt.Volt;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class MenuState extends State{
 
@@ -27,6 +28,7 @@ public class MenuState extends State{
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
     private TextButton button_play,button_high,button_exit,button_credits,button_tag;
+    private FitViewport sv;
 
     public MenuState(final GameStateManager gsm) {
         super(gsm);
@@ -45,7 +47,7 @@ public class MenuState extends State{
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
-        stage = new Stage();
+        stage = new Stage(new FitViewport(Volt.getWIDTH(),Volt.getHEIGHT(),cam));
 
 
         Gdx.input.setInputProcessor(stage);
@@ -70,6 +72,12 @@ public class MenuState extends State{
         button_tag.setHeight(100);
         button_tag.setPosition(cam.position.x * 3,(cam.position.y * 1) / 2 );
         stage.addActor(button_tag);
+        button_tag.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                gsm.set(new CreditState(gsm));
+                return true;
+            }
+        });
 
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
@@ -82,19 +90,6 @@ public class MenuState extends State{
                 return true;
             }
         });
-
-        button_credits = new TextButton("CREDITS", style);
-        button_credits.setWidth(300);
-        button_credits.setHeight(100);
-        button_credits.setPosition(cam.position.x * 3,cam.position.y * 3);
-        stage.addActor(button_credits);
-        button_credits.addListener(new InputListener() {
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                gsm.set(new CreditState(gsm));
-                return true;
-            }
-        });
-
 
 
         button_exit = new TextButton("EXIT", style);

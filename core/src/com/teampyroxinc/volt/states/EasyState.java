@@ -12,7 +12,7 @@ import com.teampyroxinc.volt.Volt;
 import com.teampyroxinc.volt.sprites.Ball;
 import com.teampyroxinc.volt.sprites.Tube_Easy;
 
-public class EasyState extends State {
+public class EasyState extends State  {
     private static final int TUBE_SPACING = 200;
     private static final int GROUND_Y_OFFSET = -70;
     private static final int TUBE_COUNT = 2;
@@ -26,6 +26,7 @@ public class EasyState extends State {
     private GlyphLayout glyph_gameover,glyph_score;
     private String gtag,score;
     private float gwidth,swidth;
+
 
     public Integer points = 0;
 

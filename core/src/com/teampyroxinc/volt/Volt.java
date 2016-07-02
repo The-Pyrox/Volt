@@ -2,6 +2,7 @@ package com.teampyroxinc.volt;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
@@ -12,15 +13,27 @@ import com.teampyroxinc.volt.states.GameStateManager;
 import com.teampyroxinc.volt.states.MenuState;
 
 public class Volt extends Game {
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 800;
 
-	public static final String TITLE = "Bolt";
+
+	public static final int WIDTH = Gdx.app.getGraphics().getWidth();
+	public static final int HEIGHT = Gdx.app.getGraphics().getHeight();
+
+
+
+	public static final String TITLE = "VOLT";
 	private GameStateManager gsm;
 
 	private Music music;
 
 	private SpriteBatch batch;
+
+	public static int getWIDTH() {
+		return Gdx.app.getGraphics().getWidth();
+	}
+
+	public static int getHEIGHT() {
+		return Gdx.app.getGraphics().getHeight();
+	}
 
 
 	@Override

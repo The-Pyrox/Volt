@@ -28,7 +28,7 @@ public class CreditState extends State {
         str2 = new String("Version 1.0");
         str3 = new String("Developer Details:");
         str4 = new String("POOJAN RATHOD");
-        str5 = new String("18,INDIAN");
+        str5 = new String("Tap To Start");
 
         glyph_title = new GlyphLayout();
         glystr1 = new GlyphLayout();
@@ -78,7 +78,7 @@ public class CreditState extends State {
         font.draw(sb,str2,cam.position.x - wid3 / 2,(cam.position.y* 5) / 4);
         font.draw(sb,str3,cam.position.x - wid4 / 2,cam.position.y );
         font.draw(sb,str4,cam.position.x - wid5 /2,(cam.position.y * 3)/ 4);
-        font.draw(sb,str5,cam.position.x - wid6 /2,cam.position.y / 2);
+        font.draw(sb,str5,cam.position.x - wid6 /2,cam.position.y / 4);
 
         sb.end();
 

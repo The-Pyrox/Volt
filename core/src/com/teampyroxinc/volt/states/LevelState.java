@@ -32,6 +32,8 @@ public class LevelState extends State {
         font_title.getData().setScale(12f);
 
 
+
+
         level = new String("LEVEL");
 
         buttonsAtlas = new TextureAtlas("buttons.pack");
