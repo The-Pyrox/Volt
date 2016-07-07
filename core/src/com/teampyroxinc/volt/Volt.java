@@ -12,12 +12,11 @@ import com.teampyroxinc.volt.states.CreditState;
 import com.teampyroxinc.volt.states.GameStateManager;
 import com.teampyroxinc.volt.states.MenuState;
 
+
 public class Volt extends Game {
 
-
-	public static final int WIDTH = Gdx.app.getGraphics().getWidth();
-	public static final int HEIGHT = Gdx.app.getGraphics().getHeight();
-
+	public static final int WIDTh = 480;
+	public static final int HEIGHT = 800;
 
 
 	public static final String TITLE = "VOLT";
@@ -27,16 +26,8 @@ public class Volt extends Game {
 
 	private SpriteBatch batch;
 
-	public static int getWIDTH() {
-		return Gdx.app.getGraphics().getWidth();
-	}
 
-	public static int getHEIGHT() {
-		return Gdx.app.getGraphics().getHeight();
-	}
-
-
-	@Override
+    @Override
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
@@ -46,6 +37,8 @@ public class Volt extends Game {
 		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new CreditState(gsm));
+
+
 	}
 
 	@Override

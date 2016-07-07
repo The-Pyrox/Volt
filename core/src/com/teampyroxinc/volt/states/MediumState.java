@@ -39,8 +39,7 @@ public class MediumState extends State{
 
         public MediumState(final GameStateManager gsm) {
             super(gsm);
-            cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
-
+            cam.setToOrtho(false,480,800 );
             background = new Texture("background.png");
             ball = new Ball(50,120);
             sb = new SpriteBatch();

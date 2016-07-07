@@ -41,7 +41,7 @@ public class EasyState extends State  {
 
     public EasyState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
+        cam.setToOrtho(false,Volt.WIDTh / 2, Volt.HEIGHT / 2 );
 
         background = new Texture("background.png");
         ball = new Ball(50,120);

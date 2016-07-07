@@ -13,8 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.teampyroxinc.volt.Volt;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class MenuState extends State{
 
@@ -28,16 +29,20 @@ public class MenuState extends State{
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
     private TextButton button_play,button_high,button_exit,button_credits,button_tag;
-    private FitViewport sv;
+    private StretchViewport sv;
+
 
     public MenuState(final GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, Volt.WIDTH / 2, Volt.HEIGHT / 2);
+        cam.setToOrtho(false,480/2,800/2 );
+        cam.position.set(cam.viewportWidth /2,cam.viewportHeight / 2,0);
+
         background = new Texture("background.png");
         font_bolt = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false );
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"), false);
         font.getData().setScale(5f);
         font_bolt.getData().setScale(12f);
+
 
 
         glyphtitle = new GlyphLayout();
@@ -47,7 +52,8 @@ public class MenuState extends State{
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
-        stage = new Stage(new FitViewport(Volt.getWIDTH(),Volt.getHEIGHT(),cam));
+        stage = new Stage();
+
 
 
         Gdx.input.setInputProcessor(stage);
@@ -113,11 +119,11 @@ public class MenuState extends State{
     }
     @Override
     public void render(SpriteBatch sb) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(cam.combined);
         stage.act();
+
         sb.begin();
+        sb.draw(background,0,0);
         stage.draw();
         sb.end();
     }

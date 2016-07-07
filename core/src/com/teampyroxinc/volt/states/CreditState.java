@@ -18,11 +18,13 @@ public class CreditState extends State {
 
     public CreditState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, Volt.WIDTH /2,Volt.HEIGHT /2);
+        cam.setToOrtho(false,Gdx.app.getGraphics().getWidth() / 3,Gdx.app.getGraphics().getHeight() / 3 );
+
         background = new Texture("background.png");
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title.getData().setScale(2f);
+
         title = new String("CREDITS");
         str1 = new String("TEAM PYROX INC.");
         str2 = new String("Version 1.0");
@@ -72,6 +74,7 @@ public class CreditState extends State {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(cam.combined);
+
         sb.begin();
         font_title.draw(sb,title,cam.position.x  / 2,cam.position.y  * 2);
         font.draw(sb,str1 ,cam.position.x - wid2 /2,(cam.position.y * 3) / 2);

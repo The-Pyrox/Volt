@@ -25,7 +25,8 @@ public class LevelState extends State {
 
     public LevelState(final GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, Volt.WIDTH / 2, Volt.HEIGHT / 2);
+        cam.setToOrtho(false,Volt.WIDTh / 2, Volt.HEIGHT / 2 );
+
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font.getData().setScale(5f);
