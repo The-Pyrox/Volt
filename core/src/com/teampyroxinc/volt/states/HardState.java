@@ -114,7 +114,7 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         sb.draw(ground,groundPos2.x,groundPos2.y);
         if (gameover){
             font_gameover.draw(sb,gtag,cam.position.x - gwidth / 2,(cam.position.y * 3 ) / 2);
-            font.draw(sb,"YOUR SCORE IS",cam.position.x - swidth / 2, cam.position.y );
+            font.draw(sb,score,cam.position.x - swidth / 2, cam.position.y );
             font.draw(sb,Integer.toString(getPoints()),cam.position.x,(cam.position.y * 3) / 4);
             Gdx.graphics.setContinuousRendering(false);
             newgame();
@@ -137,6 +137,10 @@ public class HardState extends State{    private static final int TUBE_SPACING =
     @Override
     public void dispose() {
         sb.dispose();
+        font.dispose();
+        font_gameover.dispose();
+        background.dispose();
+        ball.dispose();
     }
     public int getPoints() {
         return points;

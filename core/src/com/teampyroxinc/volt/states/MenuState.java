@@ -3,9 +3,7 @@ package com.teampyroxinc.volt.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,48 +12,33 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.teampyroxinc.volt.Volt;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
 
 public class MenuState extends State{
 
-    private Texture background;
     private BitmapFont font_bolt,font;
     private SpriteBatch sb;
-    private GlyphLayout glyphtitle;
-    private String title;
-    private float title_width;
     private Stage stage;
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
-    private TextButton button_play,button_high,button_exit,button_credits,button_tag;
-    private StretchViewport sv;
+    private TextButton button_play,button_high,button_exit,button_tag;
+
 
 
     public MenuState(final GameStateManager gsm) {
         super(gsm);
 
+        sb = new SpriteBatch();
 
-
-        background = new Texture("background.png");
         font_bolt = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false );
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"), false);
         font.getData().setScale(2f);
         font_bolt.getData().setScale(5f);
 
-
-
-        glyphtitle = new GlyphLayout();
-        title = new String("VOLT");
-        glyphtitle.setText(font_bolt,title);
-        title_width = glyphtitle.width;
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
         stage = new Stage(new FitViewport(480,800));
-
-
 
 
         Gdx.input.setInputProcessor(stage);
@@ -69,7 +52,7 @@ public class MenuState extends State{
         style_title.down = buttonSkin.getDrawable("buttons");
         style_title.font = font_bolt;
 
-        button_high = new TextButton(title, style_title);
+        button_high = new TextButton("VOLT", style_title);
         button_high.setWidth(300);
         button_high.setHeight(100);
         button_high.setPosition(100,600);
@@ -90,7 +73,7 @@ public class MenuState extends State{
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
         button_play.setHeight(100);
-        button_play.setPosition(100,400);
+        button_play.setPosition(100,300);
         stage.addActor(button_play);
         button_play.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -98,19 +81,6 @@ public class MenuState extends State{
                 return true;
             }
         });
-
-        /*button_credits = new TextButton("CREDITS", style);
-        button_credits.setWidth(300);
-        button_credits.setHeight(100);
-        button_credits.setPosition(100,300);
-        stage.addActor(button_credits);
-        button_credits.addListener(new InputListener() {
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                gsm.set(new CreditState(gsm));
-                return true;
-            }
-        });*/
-
 
         button_exit = new TextButton("EXIT", style);
         button_exit.setWidth(300);
@@ -137,16 +107,14 @@ public class MenuState extends State{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(cam.combined);
         stage.act();
-
         sb.begin();
-
         stage.draw();
         sb.end();
     }
     @Override
     public void dispose() {
         stage.dispose();
-
+        sb.dispose();
         font_bolt.dispose();
         font.dispose();
         buttonSkin.dispose();

@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.teampyroxinc.volt.Volt;
+
 
 
 public class LevelState extends State {
@@ -27,13 +27,12 @@ public class LevelState extends State {
     public LevelState(final GameStateManager gsm) {
         super(gsm);
 
+        sb = new SpriteBatch();
+
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font.getData().setScale(2f);
         font_title.getData().setScale(5f);
-
-
-
 
         level = new String("LEVEL");
 
@@ -66,7 +65,6 @@ public class LevelState extends State {
         stage.addActor(button_easy);
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-
                 gsm.set(new EasyState(gsm));
                 return true;
             }
@@ -79,7 +77,6 @@ public class LevelState extends State {
         stage.addActor(button_medium);
         button_medium.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-
                 gsm.set(new MediumState(gsm));
                 return true;
             }
@@ -92,24 +89,18 @@ public class LevelState extends State {
         stage.addActor(button_hard);
         button_hard.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-
                 gsm.set(new HardState(gsm));
                 return true;
             }
         });
-
-
-
     }
 
     @Override
     public void handleInput() {
-
     }
 
     @Override
     public void update(float dt) {
-
     }
 
     @Override
@@ -121,14 +112,13 @@ public class LevelState extends State {
         sb.begin();
         stage.draw();
         sb.end();
-
     }
 
     @Override
     public void dispose() {
         stage.dispose();
+        sb.dispose();
         font_title.dispose();
-
         font.dispose();
         buttonsAtlas.dispose();
         buttonSkin.dispose();

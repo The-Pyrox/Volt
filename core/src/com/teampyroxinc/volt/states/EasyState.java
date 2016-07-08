@@ -26,18 +26,8 @@ public class EasyState extends State  {
     private GlyphLayout glyph_gameover,glyph_score;
     private String gtag,score;
     private float gwidth,swidth;
-
-
     public Integer points = 0;
-
-
     public boolean gameover;
-
-
-
-
-
-
 
     public EasyState(GameStateManager gsm) {
         super(gsm);
@@ -98,16 +88,12 @@ public class EasyState extends State  {
                 if (tubeEasy.collides(ball.getBounds())) {
                     gameover = true;
                 }
-
-
         }
 
         if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             gameover = true;
-
         }
         Gdx.graphics.setContinuousRendering(true);
-
         cam.update();
     }
     @Override
@@ -122,23 +108,17 @@ public class EasyState extends State  {
                 sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
                 sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
             }
-
-
-
         font.draw(sb,Long.toString(getPoints()),cam.position.x ,cam.position.y * 2 );
 
         sb.draw(ground,groundPos1.x,groundPos1.y);
         sb.draw(ground,groundPos2.x,groundPos2.y);
         if (gameover){
             font_gameover.draw(sb,gtag,cam.position.x - gwidth / 2,(cam.position.y * 3 ) / 2);
-            font.draw(sb,"YOUR SCORE IS",cam.position.x - swidth / 2, cam.position.y );
+            font.draw(sb,score,cam.position.x - swidth / 2, cam.position.y );
             font.draw(sb,Integer.toString(getPoints()),cam.position.x,(cam.position.y * 3) / 4);
             Gdx.graphics.setContinuousRendering(false);
             newgame();
         }
-
-
-
         sb.end();
     }
     public void updateGround(){
@@ -155,6 +135,10 @@ public class EasyState extends State  {
     @Override
     public void dispose() {
         sb.dispose();
+        background.dispose();
+        ball.dispose();
+        font_gameover.dispose();
+        font.dispose();
     }
     public Integer getPoints() {
         return points;

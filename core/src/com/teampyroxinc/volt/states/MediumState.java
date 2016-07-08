@@ -13,37 +13,35 @@ import com.teampyroxinc.volt.sprites.Tube_Medium;
 
 
 public class MediumState extends State{
-        private static final int TUBE_SPACING = 200;
-        private static final int GROUND_Y_OFFSET = -70;
-        private static final int TUBE_COUNT = 2;
-        private Array<Tube_Medium> tubes;
-        private Ball ball;
-        private SpriteBatch sb;
-        private Texture background;
-        private Texture ground;
-        private Vector2 groundPos1,groundPos2;
-        private BitmapFont font,font_gameover;
-        private GlyphLayout glyph_gameover,glyph_score;
-        private String gtag,score;
-        private float gwidth,swidth;
-
-        private int points;
-
-
-        public boolean gameover;
+    private static final int TUBE_SPACING = 200;
+    private static final int GROUND_Y_OFFSET = -70;
+    private static final int TUBE_COUNT = 2;
+    private Array<Tube_Medium> tubes;
+    private Ball ball;
+    private SpriteBatch sb;
+    private Texture background;
+    private Texture ground;
+    private Vector2 groundPos1,groundPos2;
+    private BitmapFont font,font_gameover;
+    private GlyphLayout glyph_gameover,glyph_score;
+    private String gtag,score;
+    private float gwidth,swidth;
+    private int points;
+    public boolean gameover;
 
 
 
 
 
 
-        public MediumState(final GameStateManager gsm) {
+    public MediumState(final GameStateManager gsm) {
             super(gsm);
             cam.setToOrtho(false,Volt.WIDTH / 2,Volt.HEIGHT/2 );
             background = new Texture("background.png");
             ball = new Ball(50,120);
             sb = new SpriteBatch();
             ground = new Texture("ground.png");
+            sb = new SpriteBatch();
 
             tubes = new Array<Tube_Medium>();
             font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
@@ -86,7 +84,6 @@ public class MediumState extends State{
 
                 if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
                     tubeEasy.reposition(tubeEasy.getPosTopTube().x);
-
                     tubeEasy.reposition(tubeEasy.getPosHosTube().x + 100);
                     tubeEasy.reposition(tubeEasy.getPosBotTube().x + 150 + 320);
                     points = points + 2;
@@ -94,16 +91,12 @@ public class MediumState extends State{
                 if (tubeEasy.collides(ball.getBounds())) {
                     gameover = true;
                 }
-
-
             }
-
             if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
                 gameover = true;
 
             }
             Gdx.graphics.setContinuousRendering(true);
-
             cam.update();
         }
         @Override
@@ -118,19 +111,17 @@ public class MediumState extends State{
                 sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
             }
 
-
             font.draw(sb,Long.toString(getPoints()),cam.position.x ,cam.position.y * 2 );
 
             sb.draw(ground,groundPos1.x,groundPos1.y);
             sb.draw(ground,groundPos2.x,groundPos2.y);
             if (gameover){
                 font_gameover.draw(sb,gtag,cam.position.x - gwidth / 2,(cam.position.y * 3 ) / 2);
-                font.draw(sb,"YOUR SCORE IS",cam.position.x - swidth / 2, cam.position.y );
+                font.draw(sb,score,cam.position.x - swidth / 2, cam.position.y );
                 font.draw(sb,Integer.toString(getPoints()),cam.position.x,(cam.position.y * 3) / 4);
                 Gdx.graphics.setContinuousRendering(false);
                 newgame();
             }
-
             sb.end();
         }
         public void updateGround(){
@@ -148,8 +139,11 @@ public class MediumState extends State{
         @Override
         public void dispose() {
             sb.dispose();
-
-
+            font.dispose();
+            font_gameover.dispose();
+            font.dispose();
+            background.dispose();
+            ball.dispose();
 
         }
         public int getPoints() {
