@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.teampyroxinc.volt.Volt;
 
 
@@ -25,12 +26,11 @@ public class LevelState extends State {
 
     public LevelState(final GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false,Volt.WIDTh / 2, Volt.HEIGHT / 2 );
 
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
-        font.getData().setScale(5f);
-        font_title.getData().setScale(12f);
+        font.getData().setScale(2f);
+        font_title.getData().setScale(5f);
 
 
 
@@ -40,7 +40,7 @@ public class LevelState extends State {
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
-        stage = new Stage();
+        stage = new Stage(new FitViewport(480,800));
 
         Gdx.input.setInputProcessor(stage);
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
@@ -56,13 +56,13 @@ public class LevelState extends State {
         button_level = new TextButton(level, style_title);
         button_level.setWidth(300);
         button_level.setHeight(100);
-        button_level.setPosition(cam.position.x * 3,cam.position.y * 7 );
+        button_level.setPosition(100,500 );
         stage.addActor(button_level);
 
         button_easy= new TextButton("EASY", style);
         button_easy.setWidth(300);
         button_easy.setHeight(100);
-        button_easy.setPosition(cam.position.x * 3,cam.position.y * 4);
+        button_easy.setPosition(100,400);
         stage.addActor(button_easy);
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -75,7 +75,7 @@ public class LevelState extends State {
         button_medium= new TextButton("MEDIUM", style);
         button_medium.setWidth(300);
         button_medium.setHeight(100);
-        button_medium.setPosition(cam.position.x * 3,cam.position.y * 3);
+        button_medium.setPosition(100,300);
         stage.addActor(button_medium);
         button_medium.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -88,7 +88,7 @@ public class LevelState extends State {
         button_hard= new TextButton("HARD", style);
         button_hard.setWidth(300);
         button_hard.setHeight(100);
-        button_hard.setPosition(cam.position.x * 3,cam.position.y * 2);
+        button_hard.setPosition(100,200);
         stage.addActor(button_hard);
         button_hard.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -133,5 +133,8 @@ public class LevelState extends State {
         buttonsAtlas.dispose();
         buttonSkin.dispose();
 
+    }
+    public void resize (int width, int height) {
+        stage.getViewport().update(288,512, true);
     }
 }

@@ -16,9 +16,9 @@ public class CreditState extends State {
     private String title,str1,str2,str3,str4,str5;
     private float wid1,wid2,wid3,wid4,wid5,wid6;
 
-    public CreditState(GameStateManager gsm) {
+    public CreditState(final GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false,Gdx.app.getGraphics().getWidth() / 3,Gdx.app.getGraphics().getHeight() / 3 );
+        cam.setToOrtho(false,480/2,800/2 );
 
         background = new Texture("background.png");
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);

@@ -15,7 +15,7 @@ import com.teampyroxinc.volt.states.MenuState;
 
 public class Volt extends Game {
 
-	public static final int WIDTh = 480;
+	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
 
 

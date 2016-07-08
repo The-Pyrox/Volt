@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.teampyroxinc.volt.Volt;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -34,14 +35,14 @@ public class MenuState extends State{
 
     public MenuState(final GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false,480/2,800/2 );
-        cam.position.set(cam.viewportWidth /2,cam.viewportHeight / 2,0);
+
+
 
         background = new Texture("background.png");
         font_bolt = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false );
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"), false);
-        font.getData().setScale(5f);
-        font_bolt.getData().setScale(12f);
+        font.getData().setScale(2f);
+        font_bolt.getData().setScale(5f);
 
 
 
@@ -52,7 +53,8 @@ public class MenuState extends State{
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
-        stage = new Stage();
+        stage = new Stage(new FitViewport(480,800));
+
 
 
 
@@ -70,13 +72,13 @@ public class MenuState extends State{
         button_high = new TextButton(title, style_title);
         button_high.setWidth(300);
         button_high.setHeight(100);
-        button_high.setPosition(cam.position.x * 3,cam.position.y * 7);
+        button_high.setPosition(100,600);
         stage.addActor(button_high);
 
         button_tag = new TextButton("TEAM PYROX INC.", style);
         button_tag.setWidth(300);
         button_tag.setHeight(100);
-        button_tag.setPosition(cam.position.x * 3,(cam.position.y * 1) / 2 );
+        button_tag.setPosition(100,100);
         stage.addActor(button_tag);
         button_tag.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -88,7 +90,7 @@ public class MenuState extends State{
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
         button_play.setHeight(100);
-        button_play.setPosition(cam.position.x * 3,cam.position.y * 4);
+        button_play.setPosition(100,400);
         stage.addActor(button_play);
         button_play.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -97,11 +99,23 @@ public class MenuState extends State{
             }
         });
 
+        /*button_credits = new TextButton("CREDITS", style);
+        button_credits.setWidth(300);
+        button_credits.setHeight(100);
+        button_credits.setPosition(100,300);
+        stage.addActor(button_credits);
+        button_credits.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                gsm.set(new CreditState(gsm));
+                return true;
+            }
+        });*/
+
 
         button_exit = new TextButton("EXIT", style);
         button_exit.setWidth(300);
         button_exit.setHeight(100);
-        button_exit.setPosition(cam.position.x * 3,cam.position.y * 2);
+        button_exit.setPosition(100,200);
         stage.addActor(button_exit);
         button_exit.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -119,11 +133,13 @@ public class MenuState extends State{
     }
     @Override
     public void render(SpriteBatch sb) {
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(cam.combined);
         stage.act();
 
         sb.begin();
-        sb.draw(background,0,0);
+
         stage.draw();
         sb.end();
     }
@@ -135,6 +151,10 @@ public class MenuState extends State{
         font.dispose();
         buttonSkin.dispose();
         buttonsAtlas.dispose();
+    }
+
+    public void resize (int width, int height) {
+        stage.getViewport().update(288,512, true);
     }
 }
 
