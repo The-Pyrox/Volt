@@ -28,6 +28,7 @@ public class EasyState extends State  {
     private float gwidth,swidth;
     public Integer points = 0;
     public boolean gameover;
+    private int level;
 
     public EasyState(GameStateManager gsm) {
         super(gsm);
@@ -76,18 +77,19 @@ public class EasyState extends State  {
         updateGround();
         cam.position.x = ball.getPosition().x + 80;
 
+
         for (Tube_Easy tubeEasy : tubes) {
 
             if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
                 tubeEasy.reposition(tubeEasy.getPosTopTube().x);
-                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150 );
+                tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
                 tubeEasy.reposition(tubeEasy.getPosBotTube().x + 300 + 320);
                 points = points + 1;
 
-                }
-                if (tubeEasy.collides(ball.getBounds())) {
-                    gameover = true;
-                }
+            }
+            if (tubeEasy.collides(ball.getBounds())) {
+                gameover = true;
+            }
         }
 
         if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
@@ -108,10 +110,11 @@ public class EasyState extends State  {
                 sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
                 sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
             }
-        font.draw(sb,Long.toString(getPoints()),cam.position.x ,cam.position.y * 2 );
+        font.draw(sb, Long.toString(getPoints()), cam.position.x, cam.position.y * 2);
 
-        sb.draw(ground,groundPos1.x,groundPos1.y);
-        sb.draw(ground,groundPos2.x,groundPos2.y);
+        sb.draw(ground, groundPos1.x, groundPos1.y);
+        sb.draw(ground, groundPos2.x, groundPos2.y);
+
         if (gameover){
             font_gameover.draw(sb,gtag,cam.position.x - gwidth / 2,(cam.position.y * 3 ) / 2);
             font.draw(sb,score,cam.position.x - swidth / 2, cam.position.y );
@@ -145,4 +148,11 @@ public class EasyState extends State  {
     }
 
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 }

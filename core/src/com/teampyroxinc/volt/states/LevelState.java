@@ -23,6 +23,7 @@ public class LevelState extends State {
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
     private TextButton button_easy,button_medium,button_hard,button_level;
+    private EasyState easyState;
 
     public LevelState(final GameStateManager gsm) {
         super(gsm);
@@ -35,6 +36,7 @@ public class LevelState extends State {
         font_title.getData().setScale(5f);
 
         level = new String("LEVEL");
+        easyState = new EasyState(gsm);
 
         buttonsAtlas = new TextureAtlas("buttons.pack");
         buttonSkin = new Skin();
@@ -65,6 +67,7 @@ public class LevelState extends State {
         stage.addActor(button_easy);
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                easyState.setLevel(1);
                 gsm.set(new EasyState(gsm));
                 return true;
             }
@@ -122,6 +125,7 @@ public class LevelState extends State {
         font.dispose();
         buttonsAtlas.dispose();
         buttonSkin.dispose();
+        easyState.dispose();
 
     }
     public void resize (int width, int height) {
