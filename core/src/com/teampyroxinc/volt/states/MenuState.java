@@ -63,12 +63,6 @@ public class MenuState extends State{
         button_tag.setHeight(100);
         button_tag.setPosition(100,100);
         stage.addActor(button_tag);
-        button_tag.addListener(new InputListener() {
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                gsm.set(new CreditState(gsm));
-                return true;
-            }
-        });
 
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
@@ -82,21 +76,22 @@ public class MenuState extends State{
             }
         });
 
-        button_more = new TextButton("PLAY", style);
+        button_more = new TextButton("MORE", style);
         button_more.setWidth(300);
         button_more.setHeight(100);
         button_more.setPosition(100,300);
         stage.addActor(button_more);
-        button_play.addListener(new InputListener() {
+        button_more.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 gsm.set(new MoreState(gsm));
                 return true;
             }
         });
 
+
         button_exit = new TextButton("EXIT", style);
         button_exit.setWidth(300);
-        button_exit.setHeight(100);
+        button_exit.setHeight(50);
         button_exit.setPosition(100,200);
         stage.addActor(button_exit);
         button_exit.addListener(new InputListener() {
@@ -134,7 +129,7 @@ public class MenuState extends State{
     }
 
     public void resize (int width, int height) {
-        stage.getViewport().update(288,512, true);
+        stage.getViewport().update(480,800, true);
     }
 }
 

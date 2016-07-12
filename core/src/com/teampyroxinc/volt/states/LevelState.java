@@ -57,7 +57,7 @@ public class LevelState extends State {
         button_level = new TextButton(level, style_title);
         button_level.setWidth(300);
         button_level.setHeight(100);
-        button_level.setPosition(100,500 );
+        button_level.setPosition(100,600 );
         stage.addActor(button_level);
 
         button_easy= new TextButton("EASY", style);

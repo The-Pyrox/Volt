@@ -20,7 +20,7 @@ public class MoreState extends State {
     private Stage stage;
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
-    private TextButton button_rate,button_change;
+    private TextButton button_rate,button_change,button_credit;
 
 
 
@@ -43,7 +43,7 @@ public class MoreState extends State {
         style.down = buttonSkin.getDrawable("buttons");
         style.font = font;
 
-        button_rate = new TextButton("Rate & Review", style);
+        button_rate = new TextButton("RATE & REVIEW", style);
         button_rate.setWidth(300);
         button_rate.setHeight(100);
         button_rate.setPosition(100,500);
@@ -55,7 +55,7 @@ public class MoreState extends State {
             }
         });
 
-        button_change = new TextButton("Change Log", style);
+        button_change = new TextButton("CHANGE LOG", style);
         button_change.setWidth(300);
         button_change.setHeight(100);
         button_change.setPosition(100,400);
@@ -66,6 +66,19 @@ public class MoreState extends State {
                 return true;
             }
         });
+
+        button_credit = new TextButton("CREDITS", style);
+        button_credit.setWidth(300);
+        button_credit.setHeight(100);
+        button_credit.setPosition(100,300);
+        stage.addActor(button_credit);
+        button_credit.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                gsm.set(new CreditState(gsm));
+                return true;
+            }
+        });
+
 
     }
 
