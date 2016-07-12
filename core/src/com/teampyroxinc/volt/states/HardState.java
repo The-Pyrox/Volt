@@ -84,8 +84,6 @@ public class HardState extends State{    private static final int TUBE_SPACING =
             if (tubeEasy.collides(ball.getBounds())) {
                 gameover = true;
             }
-
-
         }
 
         if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
