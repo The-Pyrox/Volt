@@ -116,6 +116,7 @@ public class MediumState extends State{
             sb.draw(ground,groundPos1.x,groundPos1.y);
             sb.draw(ground,groundPos2.x,groundPos2.y);
             if (gameover){
+                sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
                 font_gameover.draw(sb,gtag,cam.position.x - gwidth / 2,(cam.position.y * 3 ) / 2);
                 font.draw(sb,score,cam.position.x - swidth / 2, cam.position.y );
                 font.draw(sb,Integer.toString(getPoints()),cam.position.x,(cam.position.y * 3) / 4);
