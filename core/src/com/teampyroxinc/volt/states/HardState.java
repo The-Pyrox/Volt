@@ -85,6 +85,9 @@ public class HardState extends State{    private static final int TUBE_SPACING =
                 gameover = true;
             }
         }
+        if (ball.getPosition().y >= cam.viewportHeight){
+            gameover = true;
+        }
 
         if(ball.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             gameover = true;
