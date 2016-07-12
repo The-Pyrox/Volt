@@ -21,7 +21,7 @@ public class MenuState extends State{
     private Stage stage;
     private TextureAtlas buttonsAtlas;
     private Skin buttonSkin;
-    private TextButton button_play,button_high,button_exit,button_tag;
+    private TextButton button_play,button_high,button_exit,button_more,button_tag;
 
 
 
@@ -73,11 +73,23 @@ public class MenuState extends State{
         button_play = new TextButton("PLAY", style);
         button_play.setWidth(300);
         button_play.setHeight(100);
-        button_play.setPosition(100,300);
+        button_play.setPosition(100,400);
         stage.addActor(button_play);
         button_play.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 gsm.set(new LevelState(gsm));
+                return true;
+            }
+        });
+
+        button_more = new TextButton("PLAY", style);
+        button_more.setWidth(300);
+        button_more.setHeight(100);
+        button_more.setPosition(100,300);
+        stage.addActor(button_more);
+        button_play.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                gsm.set(new MoreState(gsm));
                 return true;
             }
         });
