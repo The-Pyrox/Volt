@@ -55,7 +55,7 @@ public class MoreState extends State {
             }
         });
 
-        /*button_change = new TextButton("CHANGE LOG", style);
+        button_change = new TextButton("CHANGE LOG", style);
         button_change.setWidth(300);
         button_change.setHeight(100);
         button_change.setPosition(100,300);
@@ -65,7 +65,7 @@ public class MoreState extends State {
                 gsm.set(new ChangeState(gsm));
                 return true;
             }
-        });*/
+        });
 
         button_credit = new TextButton("CREDITS", style);
         button_credit.setWidth(300);

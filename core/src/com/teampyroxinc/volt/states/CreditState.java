@@ -18,7 +18,7 @@ public class CreditState extends State {
     public CreditState(final GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false,480/2,800/2 );
-        Gdx.input.setCatchBackKey(true);
+
 
         sb = new SpriteBatch();
 
