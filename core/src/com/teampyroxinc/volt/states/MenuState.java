@@ -91,7 +91,7 @@ public class MenuState extends State{
 
         button_exit = new TextButton("EXIT", style);
         button_exit.setWidth(300);
-        button_exit.setHeight(50);
+        button_exit.setHeight(100);
         button_exit.setPosition(100,200);
         stage.addActor(button_exit);
         button_exit.addListener(new InputListener() {

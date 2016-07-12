@@ -81,7 +81,7 @@ public class EasyState extends State  {
         for (Tube_Easy tubeEasy : tubes) {
 
             if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
-                tubeEasy.reposition(tubeEasy.getPosTopTube().x);
+                tubeEasy.reposition(tubeEasy.getPosTopTube().x );
                 tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
                 tubeEasy.reposition(tubeEasy.getPosBotTube().x + 300 + 320);
                 points = points + 1;
@@ -106,7 +106,6 @@ public class EasyState extends State  {
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
         for (Tube_Easy tubeEasy : tubes) {
                 sb.draw(tubeEasy.getTopTube(), tubeEasy.getPosTopTube().x, tubeEasy.getPosTopTube().y);
-
                 sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
                 sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
             }

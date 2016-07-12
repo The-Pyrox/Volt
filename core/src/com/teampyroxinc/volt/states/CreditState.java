@@ -9,13 +9,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class CreditState extends State {
     private BitmapFont font_title,font;
     private SpriteBatch sb;
+
     private GlyphLayout glyph_title,glystr1,glystr2,glystr3,glystr4,glystr5;
     private String title,str1,str2,str3,str4,str5;
     private float wid1,wid2,wid3,wid4,wid5,wid6;
 
+
     public CreditState(final GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false,480/2,800/2 );
+        Gdx.input.setCatchBackKey(true);
+
         sb = new SpriteBatch();
 
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
@@ -27,7 +31,7 @@ public class CreditState extends State {
         str2 = new String("Version 1.1");
         str3 = new String("Developer Details:");
         str4 = new String("POOJAN RATHOD");
-        str5 = new String("Tap To Return to Menu");
+        str5 = new String("Tap To Return");
 
         glyph_title = new GlyphLayout();
         glystr1 = new GlyphLayout();
@@ -50,18 +54,17 @@ public class CreditState extends State {
         wid5 = glystr4.width;
         wid6 = glystr5.width;
 
+
     }
 
     @Override
     public void handleInput() {
-        if (Gdx.input.justTouched()){
-            gsm.set(new MenuState(gsm));
-        }
     }
 
     @Override
     public void update(float dt) {
-        handleInput();
+
+
     }
 
     @Override
@@ -76,7 +79,10 @@ public class CreditState extends State {
         font.draw(sb,str3,cam.position.x - wid4 / 2,cam.position.y );
         font.draw(sb,str4,cam.position.x - wid5 /2,(cam.position.y * 3)/ 4);
         font.draw(sb,str5,cam.position.x - wid6 /2,cam.position.y / 4);
+        changestate();
         sb.end();
+
+
 
     }
 
@@ -86,4 +92,13 @@ public class CreditState extends State {
         font_title.dispose();
         sb.dispose();
     }
+
+    public void changestate(){
+        if (Gdx.input.isTouched()){
+            gsm.set(new MenuState(gsm));
+        }
+    }
+
+
+
 }

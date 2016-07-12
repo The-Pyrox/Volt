@@ -46,7 +46,7 @@ public class MoreState extends State {
         button_rate = new TextButton("RATE & REVIEW", style);
         button_rate.setWidth(300);
         button_rate.setHeight(100);
-        button_rate.setPosition(100,500);
+        button_rate.setPosition(100,400);
         stage.addActor(button_rate);
         button_rate.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -55,22 +55,22 @@ public class MoreState extends State {
             }
         });
 
-        button_change = new TextButton("CHANGE LOG", style);
+        /*button_change = new TextButton("CHANGE LOG", style);
         button_change.setWidth(300);
         button_change.setHeight(100);
-        button_change.setPosition(100,400);
+        button_change.setPosition(100,300);
         stage.addActor(button_change);
         button_change.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 gsm.set(new ChangeState(gsm));
                 return true;
             }
-        });
+        });*/
 
         button_credit = new TextButton("CREDITS", style);
         button_credit.setWidth(300);
         button_credit.setHeight(100);
-        button_credit.setPosition(100,300);
+        button_credit.setPosition(100,200);
         stage.addActor(button_credit);
         button_credit.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
