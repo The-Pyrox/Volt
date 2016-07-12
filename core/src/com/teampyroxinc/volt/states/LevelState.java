@@ -67,7 +67,7 @@ public class LevelState extends State {
         stage.addActor(button_easy);
         button_easy.addListener(new InputListener() {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                easyState.setLevel(1);
+
                 gsm.set(new EasyState(gsm));
                 return true;
             }

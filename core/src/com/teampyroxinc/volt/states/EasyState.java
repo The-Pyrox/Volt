@@ -73,8 +73,12 @@ public class EasyState extends State  {
     @Override
     public void update(float dt) {
         handleInput();
-        ball.update(dt);
+        if (points<5)ball.update1(dt);
+        if (points>=5 && points<10)ball.update2(dt);
+        if (points>=10 && points<15)ball.update3(dt);
+        if (points>=15 )ball.update4(dt);
         updateGround();
+
         cam.position.x = ball.getPosition().x + 80;
 
 
@@ -148,11 +152,5 @@ public class EasyState extends State  {
     }
 
 
-    public int getLevel() {
-        return level;
-    }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
 }

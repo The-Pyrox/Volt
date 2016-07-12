@@ -68,7 +68,8 @@ public class HardState extends State{    private static final int TUBE_SPACING =
     @Override
     public void update(float dt) {
         handleInput();
-        ball.update(dt);
+        if (points<21)ball.update3(dt);
+        if (points>=21)ball.update4(dt);
         updateGround();
         cam.position.x = ball.getPosition().x + 80;
 

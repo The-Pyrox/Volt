@@ -76,7 +76,9 @@ public class MediumState extends State{
         @Override
         public void update(float dt) {
             handleInput();
-            ball.update(dt);
+            if (points<14)ball.update2(dt);
+            if (points>=14 && points<30)ball.update3(dt);
+            if (points>30)ball.update4(dt);
             updateGround();
             cam.position.x = ball.getPosition().x + 80;
 

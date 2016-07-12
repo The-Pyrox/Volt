@@ -12,10 +12,14 @@ public class Ball {
     private Rectangle bounds;
     private Vector3 position;
     private Vector3 velocity;
-    private static final int MOVEMENT = 100;
+
     private Texture ball;
     private Sound bounce;
     private long score;
+
+    public Vector3 getVelocity() {
+        return velocity;
+    }
 
     public Ball(int x, int y){
         position = new Vector3(x,y,0);
@@ -26,11 +30,44 @@ public class Ball {
         score = 0;
 
     }
-    public void update(float dt){
+    public void update1(float dt){
         if (position.y > 0)
             velocity.add(0, GRAVITY ,0);
         velocity.scl(dt);
-        position.add(MOVEMENT * dt, velocity.y , 0);
+        position.add(100 * dt, velocity.y , 0);
+        if (position.y <= 36)
+            position.y = 36;
+        velocity.scl(1/dt);
+        bounds.setPosition(position.x,position.y);
+    }
+
+    public void update2(float dt){
+        if (position.y > 0)
+            velocity.add(0, GRAVITY ,0);
+        velocity.scl(dt);
+        position.add(150 * dt, velocity.y , 0);
+        if (position.y <= 36)
+            position.y = 36;
+        velocity.scl(1/dt);
+        bounds.setPosition(position.x,position.y);
+    }
+
+    public void update3(float dt){
+        if (position.y > 0)
+            velocity.add(0, GRAVITY ,0);
+        velocity.scl(dt);
+        position.add(200 * dt, velocity.y , 0);
+        if (position.y <= 36)
+            position.y = 36;
+        velocity.scl(1/dt);
+        bounds.setPosition(position.x,position.y);
+    }
+
+    public void update4(float dt){
+        if (position.y > 0)
+            velocity.add(0, GRAVITY ,0);
+        velocity.scl(dt);
+        position.add(250 * dt, velocity.y , 0);
         if (position.y <= 36)
             position.y = 36;
         velocity.scl(1/dt);
@@ -62,5 +99,6 @@ public class Ball {
         ball.dispose();
 
     }
+
 }
 
