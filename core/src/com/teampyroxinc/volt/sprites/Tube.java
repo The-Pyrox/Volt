@@ -8,7 +8,7 @@ import com.teampyroxinc.volt.states.GameStateManager;
 
 import java.util.Random;
 
-public class Tube_Medium {
+public class Tube {
     private static final int FLUCTUATION = 100;
     private static final int MAX = 300;
     private static final int ALL = 300;
@@ -21,7 +21,7 @@ public class Tube_Medium {
     public GameStateManager gsm;
 
 
-    public Tube_Medium(float x) {
+    public Tube(float x) {
         topTube = new Texture ("vertical.png");
         bottomTube = new Texture("vertical2.png");
         hosTube = new Texture("horizontal.png");
