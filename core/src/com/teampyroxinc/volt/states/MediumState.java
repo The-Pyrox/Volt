@@ -87,7 +87,7 @@ public class MediumState extends State{
                 if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
                     tubeEasy.reposition(tubeEasy.getPosTopTube().x);
                     tubeEasy.reposition(tubeEasy.getPosHosTube().x + 100);
-                    tubeEasy.reposition(tubeEasy.getPosBotTube().x + 150 + 320);
+                    tubeEasy.reposition(tubeEasy.getPosBotTube().x + 150 );
                     points = points + 2;
                 }
                 if (tubeEasy.collides(ball.getBounds())) {

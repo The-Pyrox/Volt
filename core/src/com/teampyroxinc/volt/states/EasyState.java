@@ -87,7 +87,7 @@ public class EasyState extends State  {
             if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
                 tubeEasy.reposition(tubeEasy.getPosTopTube().x );
                 tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
-                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 300 + 320);
+                tubeEasy.reposition(tubeEasy.getPosBotTube().x + 300 );
                 points = points + 1;
 
             }
