@@ -35,7 +35,7 @@ public class EasyState extends State  {
         cam.setToOrtho(false,Volt.WIDTH / 2, Volt.HEIGHT / 2 );
 
         background = new Texture("background.png");
-        ball = new Ball(50,120);
+        ball = new Ball(50,50);
         sb = new SpriteBatch();
         ground = new Texture("ground.png");
         tubes = new Array<Tube>();
