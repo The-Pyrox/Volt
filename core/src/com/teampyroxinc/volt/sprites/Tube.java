@@ -29,8 +29,7 @@ public class Tube {
 
 
         posTopTube = new Vector2(x + 100, rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
-
-        posHosTube = new Vector2(x + 250, rand.nextInt(ALL));
+        posHosTube = new Vector2(x + 250, 0);
         posBotTube = new Vector2(x + 400 + 320, rand.nextInt(MAX));
 
 
@@ -62,7 +61,7 @@ public class Tube {
     public void reposition(float x){
 
         posTopTube.set(x , rand.nextInt(FLUCTUATION)  + LOWEST_OPENING);
-        posHosTube.set(x + 150,rand.nextInt(ALL));
+        posHosTube.set(x+150,0);
         posBotTube.set(x + 300 + 320 ,rand.nextInt(MAX));
 
 
@@ -92,6 +91,8 @@ public class Tube {
         bottomTube.dispose();
         hosTube.dispose();
     }
+
+
 
 }
 
