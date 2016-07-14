@@ -28,6 +28,7 @@ public class MediumState extends State{
     private float gwidth,swidth;
     private int points;
     public boolean gameover;
+    private int i;
 
 
 
@@ -85,6 +86,7 @@ public class MediumState extends State{
             for (Tube tubeEasy : tubes) {
 
                 if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
+                    i = 0;
                     tubeEasy.reposition(tubeEasy.getPosTopTube().x);
                     tubeEasy.reposition(tubeEasy.getPosHosTube().x + 100);
                     tubeEasy.reposition(tubeEasy.getPosBotTube().x + 150 );
@@ -114,8 +116,8 @@ public class MediumState extends State{
             sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
             for (Tube tubeEasy : tubes) {
                 sb.draw(tubeEasy.getTopTube(), tubeEasy.getPosTopTube().x, tubeEasy.getPosTopTube().y);
-                sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y);
-                sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y);
+                sb.draw(tubeEasy.getBottomTube(), tubeEasy.getPosBotTube().x, tubeEasy.getPosBotTube().y );
+                sb.draw(tubeEasy.getHosTube(), tubeEasy.getPosHosTube().x, tubeEasy.getPosHosTube().y + i);
             }
 
             font.draw(sb,Long.toString(getPoints()),cam.position.x ,cam.position.y * 2 );
@@ -131,6 +133,7 @@ public class MediumState extends State{
                 newgame();
             }
             sb.end();
+            i++;
         }
         public void updateGround(){
             if(cam.position.x - (cam.viewportWidth / 2) > groundPos1.x + ground.getWidth())

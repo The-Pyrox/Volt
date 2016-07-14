@@ -85,6 +85,7 @@ public class EasyState extends State  {
         for (Tube tubeEasy : tubes) {
 
             if (cam.position.x - cam.viewportWidth / 2 > tubeEasy.getPosBotTube().x + tubeEasy.getBottomTube().getWidth()) {
+                i = 0;
                 tubeEasy.reposition(tubeEasy.getPosTopTube().x );
                 tubeEasy.reposition(tubeEasy.getPosHosTube().x + 150);
                 tubeEasy.reposition(tubeEasy.getPosBotTube().x + 300 );
@@ -108,6 +109,7 @@ public class EasyState extends State  {
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
+
         sb.begin();
         sb.draw(background,cam.position.x - cam.viewportWidth / 2,0);
         sb.draw(ball.getBall(),ball.getPosition().x,ball.getPosition().y);
