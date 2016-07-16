@@ -9,9 +9,11 @@ import com.badlogic.gdx.Gdx;
 public class ChangeState extends State {
     private BitmapFont font;
     private SpriteBatch sb;
+    private int i;
     public ChangeState(GameStateManager gsm) {
         super(gsm);
         sb = new SpriteBatch();
+        i=0;
         cam.setToOrtho(false,480/2,800/2 );
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font.getData().setScale(0.8f);
@@ -47,8 +49,11 @@ public class ChangeState extends State {
                 "\n" +
                 "\n TAP TO RETURN",cam.position.x - cam.viewportWidth/2 ,(cam.position.y * 7)/4 );
 
-        changestate();
+        if (i>80){
+            changestate();
+        }
         sb.end();
+        i++;
 
     }
 

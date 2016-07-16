@@ -13,6 +13,7 @@ public class CreditState extends State {
     private GlyphLayout glyph_title,glystr1,glystr2,glystr3,glystr4,glystr5;
     private String title,str1,str2,str3,str4,str5;
     private float wid1,wid2,wid3,wid4,wid5,wid6;
+    private int i;
 
 
     public CreditState(final GameStateManager gsm) {
@@ -21,6 +22,7 @@ public class CreditState extends State {
 
 
         sb = new SpriteBatch();
+        i=0;
 
         font = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
         font_title = new BitmapFont(Gdx.files.internal("myfont.fnt"),Gdx.files.internal("myfont.png"),false);
@@ -79,9 +81,11 @@ public class CreditState extends State {
         font.draw(sb,str3,cam.position.x - wid4 / 2,cam.position.y );
         font.draw(sb,str4,cam.position.x - wid5 /2,(cam.position.y * 3)/ 4);
         font.draw(sb,str5,cam.position.x - wid6 /2,cam.position.y / 4);
-        changestate();
+        if (i>80){
+            changestate();
+        }
         sb.end();
-
+        i++;
 
 
     }
