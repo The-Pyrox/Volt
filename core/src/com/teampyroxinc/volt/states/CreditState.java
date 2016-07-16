@@ -30,7 +30,7 @@ public class CreditState extends State {
 
         title = new String("CREDITS");
         str1 = new String("TEAM PYROX INC.");
-        str2 = new String("Version 1.1");
+        str2 = new String("Version 1.2");
         str3 = new String("Developer Details:");
         str4 = new String("POOJAN RATHOD");
         str5 = new String("Tap To Return");
