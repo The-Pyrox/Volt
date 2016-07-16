@@ -33,7 +33,7 @@ public class HardState extends State{    private static final int TUBE_SPACING =
         super(gsm);
         cam.setToOrtho(false,Volt.WIDTH/2,Volt.HEIGHT/2);
         background = new Texture("background.png");
-        ball = new Ball(50,50);
+        ball = new Ball(50,40);
         sb = new SpriteBatch();
         ground = new Texture("ground.png");
 
