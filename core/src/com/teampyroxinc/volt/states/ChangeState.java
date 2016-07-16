@@ -39,6 +39,8 @@ public class ChangeState extends State {
         sb.begin();
         font.draw(sb,"Change Log" +
                 "\n" +
+                "Version 1.2-" +
+                "\nMore Enhanced GamePLay" +
                 "\nVersion 1.1:" +
                 "\n-Added More Options" +
                 "\n-Enhanced Gameplay" +
